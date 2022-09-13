@@ -1,0 +1,77 @@
+<div *ngIf="isLoading" class=" center">
+  <mat-spinner
+    diameter="200"
+  ></mat-spinner>
+</div>
+
+<div *ngIf="!isLoading" class="container center" style="max-width: 450px">
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <p class="card-title text-center h1">Register a service</p>
+
+          <form [formGroup]="formRegister" class="d-grid gap-3" (submit)="saveReport()">
+            <div class="form-group p-2">
+              <label for="reportServiceId">Report Service ID</label>
+              <input type="text" class="form-control" id="reportServiceId"
+                     placeholder="Enter Report Service ID"
+                     formControlName="reportServiceId">
+            </div>
+            <div class="form-group p-2">
+              <label for="technicianId">Technician ID</label>
+              <input type="text" class="form-control" id="technicianId"
+                     placeholder="Enter Technician ID" formControlName="technicianId">
+            </div>
+            <div class="form-group p-2">
+              <mat-form-field appearance="fill" class="w-100">
+                <input
+                  matInput
+                  [ngxMatDatetimePicker]="$any(picker)"
+                  placeholder="From date & time"
+                  formControlName="serviceStartDate"
+                >
+                <mat-datepicker-toggle
+                  matSuffix [for]="$any(picker)"
+                >
+                </mat-datepicker-toggle>
+                <ngx-mat-datetime-picker
+                  #picker
+                  [enableMeridian]="false"
+                ></ngx-mat-datetime-picker>
+              </mat-form-field>
+            </div>
+            <div class="form-group p-2">
+              <mat-form-field
+                appearance="fill" class="w-100">
+                <input
+                  matInput
+                  [ngxMatDatetimePicker]="$any(picker2)"
+                  placeholder="To date & time"
+                  formControlName="serviceEndDate"
+                >
+
+                <mat-datepicker-toggle
+                  matSuffix [for]="$any(picker2)"
+                ></mat-datepicker-toggle>
+
+                <ngx-mat-datetime-picker
+                  #picker2 [enableMeridian]="false"
+                ></ngx-mat-datetime-picker>
+              </mat-form-field>
+            </div>
+            <button
+              class="btn"
+              [disabled]="formRegister.invalid"
+              [ngClass]="formRegister.invalid ? 'btn-secondary' : 'btn-primary' "
+            >Submit
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

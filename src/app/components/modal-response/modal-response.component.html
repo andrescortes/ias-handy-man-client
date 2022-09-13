@@ -1,0 +1,36 @@
+<h1 mat-dialog-title>Calculated hours</h1>
+<div mat-dialog-content class="mat-typography">
+
+  <p>
+    <span>Normal: </span>
+    {{(data.normal | formatTimePipe) || message}}
+  </p>
+  <p>
+    <span>Overtime Normal:</span>
+    {{(data.overtime | formatTimePipe ) || message}}
+  </p>
+  <p >
+    <span>Night: </span>
+    {{(data.night | formatTimePipe) || message}}
+  </p>
+  <p>
+    <span>Overtime Night: </span>
+    {{(data.overtimeNight | formatTimePipe) || message}}
+  </p>
+  <p>
+    <span>On Sunday: </span>
+    {{((data.sunday | formatTimePipe) || message)}}
+  </p>
+  <p >
+    <span>Overtime on Sunday: </span>
+    {{(data.overtimeSunday | formatTimePipe) || message}}
+  </p>
+  <p>
+    <span>Total Time: </span>
+    {{(totalSeconds | formatTimePipe) || '0 hours'}}
+  </p>
+</div>
+
+
+
+

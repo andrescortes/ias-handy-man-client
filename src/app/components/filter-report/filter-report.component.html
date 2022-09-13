@@ -1,0 +1,43 @@
+<div *ngIf="isLoading" class=" center">
+  <mat-spinner
+    diameter="200"
+  ></mat-spinner>
+</div>
+
+<div *ngIf="!isLoading" class="container center" style="max-width: 450px">
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-body">
+          <p class="card-title text-center h1">Get a Report Service</p>
+
+          <form [formGroup]="formRegister" class="d-grid gap-3" (submit)="getReportService()">
+            <div class="form-group p-2">
+              <label for="technicianId">Technician ID</label>
+              <input type="text" class="form-control" id="technicianId"
+                     placeholder="Enter Technician ID" formControlName="technicianId">
+            </div>
+            <div class="form-group p-2">
+              <label for="weekYear">Week Year</label>
+              <input type="number" class="form-control" id="weekYear"
+                     min="1"
+                     max="53"
+                     placeholder="Enter Week Year"
+                     formControlName="weekYear">
+            </div>
+
+            <button
+              class="btn"
+              [disabled]="formRegister.invalid"
+              [ngClass]="formRegister.invalid ? 'btn-secondary' : 'btn-primary' ">Submit
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
